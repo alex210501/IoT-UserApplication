@@ -1,0 +1,52 @@
+.collapsible .content {
+  padding: 6px;
+  background-color: rgb(240, 240, 240);
+  font-size: 14px;
+}
+.collapsible .header {
+  background-color: rgb(200, 200, 200);
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(220, 220, 220);
+}
+.collapsible .header .title {
+  font-weight: 400;
+}
+.preferences label {
+  display: block;
+  padding-bottom: 4px;
+}
+.data{
+  display: inline-block;
+  width:15px;
+  height:15px !important;
+}
+.capteur{
+  display: block;
+}
+.Gateway {
+  width: 50%;
+  display:inline-block !important;
+  vertical-align: top;
+  margin-right: 20%;
+  margin-bottom: 10%;
+}
+.configuration{
+  width:auto;
+  margin-bottom: 10%;
+  display:inline-block !important;
+  margin-top: 0%;
+  vertical-align: top;
+  border:solid;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}
+.App{
+  margin-left:2% ;
+}
+.configuration_line{
+  border-top: 2px solid black;
+}
