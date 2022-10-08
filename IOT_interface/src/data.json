@@ -1,0 +1,17 @@
+[
+    {
+        "temperature": 91,
+        "humidity":92,
+        "co2":93
+    },
+    {
+        "temperature": 94,
+        "humidity":95,
+        "co2":96
+    },
+    {
+        "temperature": 19,
+        "humidity":93,
+        "co2":90
+    }
+]
