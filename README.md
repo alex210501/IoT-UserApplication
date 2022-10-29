@@ -3,11 +3,10 @@
 
 clone or pull this project and execute the following lines:
 1. cd IoT-UserApplication
-2. git checkout first-release
-3. cd IOT_interface
-4. npm install react-facebook-login --legacy-peer-deps
-5. npm i
-6. npm start
+2. cd IOT_interface
+3. npm install react-facebook-login --legacy-peer-deps
+4. npm i
+5. npm start
 
 ## Warning !!!
 
