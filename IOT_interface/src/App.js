@@ -3,7 +3,6 @@ import Expand from './collapse';
 import {React,useEffect,useState} from "react";
 var data = require('./data.json');
 
-
 function App() {
 
   const [temp_min, set_temp_min] = useState(90);
@@ -18,7 +17,10 @@ function App() {
   const [temperature, set_temperature] = useState(data[data.length-1].temperature);
   const [humidity, set_humidity] = useState(data[data.length-1].humidity);
   const [co2, set_co2 ]= useState(data[data.length-1].co2);
+  const [location, set_location ]= useState(data[data.length-1].location);
+
   
+
 
 
   const change_temp_max =(event)=>{
@@ -39,7 +41,6 @@ function App() {
   const change_co2_min =(event)=>{
     set_co2_min(event.target.valueAsNumber);
   }
-
   const MINUTE_MS = 1000;
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,8 +63,8 @@ function App() {
           <label className="capteur"><div className="data" style={{ backgroundColor: temperature > temp_max  | temperature<temp_min ? 'red':'green'}}> </div> Température: {temperature}°C</label><br/>
           <label className="capteur"><div className="data" style={{ backgroundColor: humidity > humidity_max  | humidity<humidity_min ? 'red':'green'}}> </div> Humidity: {humidity}</label ><br/>
           <label className="capteur"><div className="data" style={{ backgroundColor: co2 > co2_max  | co2<co2_min ? 'red':'green'}}> </div> CO2: {co2}</label ><br/>
-          <label className="capteur"><div className="data" style={{ backgroundColor: 'white'}}> </div> GPS</label ><br/>
-
+          <label className="capteur"><div className="data" style={{ backgroundColor: 'white'}}> </div> GPS: {location[0]+" , "+location[1]} <a  href={ "https://www.google.com/maps/search/?api=1&query=" +location} target="_blank" >Google Maps</a></label ><br/>
+          
           <h3>Device 2</h3>
           <label className="capteur"><div className="data" style={{ backgroundColor: temperature > temp_max  | temperature<temp_min ? 'red':'green'}}> </div> Température: {temperature}°C</label><br/>
           <label className="capteur"><div className="data" style={{ backgroundColor: humidity > humidity_max  | humidity<humidity_min ? 'red':'green'}}> </div> Humidity: {humidity}</label ><br/>
