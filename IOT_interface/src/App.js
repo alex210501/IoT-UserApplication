@@ -1,9 +1,16 @@
 import './App.css';
 import Expand from './collapse';
 import {React,useEffect,useState} from "react";
-var data = require('./data.json');
+
 
 function App() {
+
+  const [data, setdata] = useState([]);
+  useEffect(() => {
+     fetch('http://172.17.36.72:8080/')
+     .then(response=>response.json())
+      .then(data=>{ setdata(data.data); console.log(data)})
+  }, []);
 
   const [temp_min, set_temp_min] = useState(90);
   const [temp_max, set_temp_max] = useState(100);
@@ -14,10 +21,10 @@ function App() {
   const [co2_min, set_co2_min] = useState(90);
   const [co2_max, set_co2_max] = useState(100);
   
-  const [temperature, set_temperature] = useState(data[data.length-1].temperature);
-  const [humidity, set_humidity] = useState(data[data.length-1].humidity);
-  const [co2, set_co2 ]= useState(data[data.length-1].co2);
-  const [location, set_location ]= useState(data[data.length-1].location);
+  const [temperature, set_temperature] = useState(0);//for test
+  const [humidity, set_humidity] = useState(0);
+  const [co2, set_co2 ]= useState(0);
+  const [location, set_location ]= useState(0);
 
   
 
@@ -44,9 +51,9 @@ function App() {
   const MINUTE_MS = 1000;
   useEffect(() => {
     const interval = setInterval(() => {
-      set_temperature(data[data.length-1].temperature);
-      set_humidity(data[data.length-1].humidity);
-      set_co2(data[data.length-1].co2);
+      set_temperature(0);//for test
+      set_humidity(0);
+      set_co2(0);
     }, MINUTE_MS);
   
     return () => clearInterval(interval);}, [])
