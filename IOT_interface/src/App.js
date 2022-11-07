@@ -5,12 +5,8 @@ import {React,useEffect,useState} from "react";
 
 function App() {
 
-  const [data, setdata] = useState([]);
-  useEffect(() => {
-     fetch('http://172.17.36.72:8080/')
-     .then(response=>response.json())
-      .then(data=>{ setdata(data.data); console.log(data)})
-  }, []);
+  const [ans, setans] = useState([]);
+ 
 
   const [temp_min, set_temp_min] = useState(90);
   const [temp_max, set_temp_max] = useState(100);
@@ -21,7 +17,7 @@ function App() {
   const [co2_min, set_co2_min] = useState(90);
   const [co2_max, set_co2_max] = useState(100);
   
-  const [temperature, set_temperature] = useState(0);//for test
+  const [temperature, set_temperature] = useState(0);
   const [humidity, set_humidity] = useState(0);
   const [co2, set_co2 ]= useState(0);
   const [location, set_location ]= useState(0);
@@ -51,9 +47,14 @@ function App() {
   const MINUTE_MS = 1000;
   useEffect(() => {
     const interval = setInterval(() => {
-      set_temperature(0);//for test
-      set_humidity(0);
-      set_co2(0);
+      fetch('http://172.17.36.72:8080/')
+     .then(response=>response.json())
+      .then(data=>{setans(data);
+      set_temperature(data[data.length-1].data.temperature);
+      set_humidity(data[data.length-1].data.humidity);
+      //set_co2(data[data.length-1].data.co2);
+      set_location(data[data.length-1].data.gps);
+    })
     }, MINUTE_MS);
   
     return () => clearInterval(interval);}, [])
@@ -70,7 +71,7 @@ function App() {
           <label className="capteur"><div className="data" style={{ backgroundColor: temperature > temp_max  | temperature<temp_min ? 'red':'green'}}> </div> Température: {temperature}°C</label><br/>
           <label className="capteur"><div className="data" style={{ backgroundColor: humidity > humidity_max  | humidity<humidity_min ? 'red':'green'}}> </div> Humidity: {humidity}</label ><br/>
           <label className="capteur"><div className="data" style={{ backgroundColor: co2 > co2_max  | co2<co2_min ? 'red':'green'}}> </div> CO2: {co2}</label ><br/>
-          <label className="capteur"><div className="data" style={{ backgroundColor: 'white'}}> </div> GPS: {location[0]+" , "+location[1]} <a  href={ "https://www.google.com/maps/search/?api=1&query=" +location} target="_blank" >Google Maps</a></label ><br/>
+          <label className="capteur"><div className="data" style={{ backgroundColor: 'white'}}> </div> GPS: {location.latitude + ' , '+location.longitude} <a  href={ "https://www.google.com/maps/search/?api=1&query=" +location.latitude+','+location.longitude} target="_blank" >Google Maps</a></label ><br/>
           
           <h3>Device 2</h3>
           <label className="capteur"><div className="data" style={{ backgroundColor: temperature > temp_max  | temperature<temp_min ? 'red':'green'}}> </div> Température: {temperature}°C</label><br/>
