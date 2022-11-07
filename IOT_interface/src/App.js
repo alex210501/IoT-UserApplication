@@ -8,14 +8,14 @@ function App() {
   const [ans, setans] = useState([]);
  
 
-  const [temp_min, set_temp_min] = useState(90);
-  const [temp_max, set_temp_max] = useState(100);
+  const [temp_min, set_temp_min] = useState(15);
+  const [temp_max, set_temp_max] = useState(25);
 
-  const [humidity_min, set_humidity_min] = useState(90);
-  const [humidity_max, set_humidity_max] = useState(100);
+  const [humidity_min, set_humidity_min] = useState(60);
+  const [humidity_max, set_humidity_max] = useState(80);
 
-  const [co2_min, set_co2_min] = useState(90);
-  const [co2_max, set_co2_max] = useState(100);
+  const [co2_min, set_co2_min] = useState(0);
+  const [co2_max, set_co2_max] = useState(50);
   
   const [temperature, set_temperature] = useState(0);
   const [humidity, set_humidity] = useState(0);
